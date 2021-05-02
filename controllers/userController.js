@@ -67,6 +67,25 @@ userController.verify = async (req, res) => {
     }
 }
 
+userController.getLists = async (req, res) => {
+    try{
+        const decryptedId = jwt.verify(req.headers.authorization, process.env.JWT_SECRET);
+
+
+        let lists = await models.list.findAll({
+            where: {
+                userId: decryptedId.userId
+            }
+        })
+
+        res.json({lists})
+
+    }catch(error){
+        console.log(error)
+        res.json({error})
+    }
+}
+
 
 
 module.exports = userController;
