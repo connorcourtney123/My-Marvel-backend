@@ -86,6 +86,23 @@ userController.getLists = async (req, res) => {
     }
 }
 
+userController.getUsername = async (req, res) => {
+    try{
+        // get username from unencoded id (fro when we have the list record and need the author)
+        let user = await models.user.findOne({
+            where: {
+                id: req.params.id
+            }
+        })
+
+        res.json({username: user.username})
+        
+    }catch(error){
+        console.log(error)
+        res.json({error})
+    }
+}
+
 
 
 module.exports = userController;

@@ -13,9 +13,9 @@ app.listen(3000, () => {
 //routes
 
 const userRoutes = require('./routes/userRoutes');
-// const movieRoutes = require('./routes/movieRoutes');
+const movieRoutes = require('./routes/movieRoutes');
 const listRoutes = require('./routes/listRoutes');
 
 app.use('/user', userRoutes);
-// app.use('/movie', movieRoutes);
+app.use('/movies', movieRoutes);
 app.use('/list', listRoutes);

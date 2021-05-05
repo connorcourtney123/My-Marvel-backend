@@ -58,7 +58,7 @@ listController.getDetails = async (req, res) => {
     try{
         let list = await models.list.findOne({
             where: {
-                id: req.body.listId
+                id: req.params.id
             }
         })
 
